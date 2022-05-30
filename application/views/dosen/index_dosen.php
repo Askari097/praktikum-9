@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mahasiswa</title>
     <script>
-        function hapusMahasiswa(pesan){
+        function hapusDosen(pesan){
             if (confirm(pesan)) {
                 return true;
             } else {
@@ -17,39 +17,37 @@
 </head>
 <body>
     <div class="col-md-12">
-    <h3 class="text-center">Mahasiswa</h3>
+    <h3 class="text-center">Dosen</h3>
     <table class="table table-bordered, text-center">
         <thead>
             <tr class="table-active">
                 <th>No</th>
-                <th>NIM</th>
                 <th>Nama</th>
-                <th>Gender</th>
-                <th>IPK</th>
+                <th>NIDN</th>
+                <th>Pendidikan</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
             <?php
             $nomor = 1;
-            foreach ($mahasiswa as $mhs) {
+            foreach ($dosen as $dns) {
             ?>
             <tr>
                 <td><?php echo $nomor ?></td>
-                <td><?php echo $mhs -> nim ?> </td>
-                <td><?php echo $mhs -> nama ?></td>
-                <td><?php echo $mhs -> gender ?></td>
-                <td><?php echo $mhs -> ipk ?></td>
+                <td><?= $dns -> nama ?></td>
+                <td><?= $dns -> nidn ?> </td>
+                <td><?= $dns -> pendidikan ?></td>
                 <td>
-                    <a href=<?php echo base_url("index.php/mahasiswa/detail/$mhs->id") ?>
+                    <a href="<?php echo base_url("index.php/dosen/detail_dosen/$dns->id") ?>"
                     class="btn btn-info btn-lg active" role="button" aria-pressed="true">Detail</a>
                     &nbsp;
-                    <a href= <?php echo base_url("index.php/mahasiswa/edit/$mhs->id") ?> 
-                    class="btn btn-success btn-lg active" >Edit</a>
+                    <a href="<?php echo base_url("index.php/dosen/edit_dosen/$dns->id") ?>"
+                    class="btn btn-success btn-lg active" role="button" aria-pressed="true">Edit</a>
                     &nbsp;
-                    <a href= <?php echo base_url("index.php/mahasiswa/delete/$mhs->id") ?> 
-                    class="btn btn-danger btn-lg active" 
-                    onclick=" return hapusMahasiswa('Apakah Anda yakin ingin menghapus mahasiswa yang bernama <?php echo $mhs-> nama ?> ?')" >Hapus</a>
+                    <a href=<?php echo base_url("index.php/dosen/delete_dosen/$dns->id") ?> 
+                    class="btn btn-danger btn-lg active" role="button" aria-pressed="true"
+                    onclick=" return hapusDosen('Anda Yakin ingin menghapus mahasiswa yang bernama <?php echo $dns->nama ?>?')">Delete</a>
                 </td>
             </tr>
             <?php
@@ -58,7 +56,7 @@
             ?>
         </tbody>
     </table>
-    <a href= <?php echo base_url("index.php/mahasiswa/form") ?> class="btn btn-primary btn-lg active" >Tambah</a>
+    <a href= <?php echo base_url("index.php/dosen/form_dosen") ?> class="btn btn-primary btn-lg active" >Tambah</a>
     </div>
 </body>
 </html>
